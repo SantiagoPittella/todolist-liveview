@@ -4,6 +4,15 @@ defmodule TodoListWeb.ItemController do
   alias TodoList.Todo
   alias TodoList.Todo.Item
 
+  defmacro __using__(_) do
+    quote do
+      alias TodoList.{Repo}
+
+      def list_items do
+        Repo.list_items()
+      end
+    end
+  end
   def index(conn, _params) do
     items = Todo.list_items()
     render(conn, "index.html", items: items)

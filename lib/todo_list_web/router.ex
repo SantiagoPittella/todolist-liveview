@@ -17,9 +17,7 @@ defmodule TodoListWeb.Router do
   scope "/", TodoListWeb do
     pipe_through :browser
 
-    live "/items", ItemsLive, :index
-    live "/items/new", ItemsLive, :new
-    live "/items/:id/edit", ItemsLive, :edit
+    live "/", PageLive, :index
     resources "/items", ItemController
   end
 
