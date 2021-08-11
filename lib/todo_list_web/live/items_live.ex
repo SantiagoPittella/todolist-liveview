@@ -4,33 +4,10 @@ defmodule TodoListWeb.ItemsLive do
 
   use Phoenix.LiveView
   use TodoListWeb.ItemController
-
+  alias TodoListWeb.ItemView
 
   def render(assigns) do
-    ~L"""
-    <h1>Listing Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>Person</th>
-      <th>Status</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for item <- @items do %>
-    <tr>
-      <td><%= item.text %></td>
-      <td><%= item.person_id %></td>
-      <td><%= item.status %></td>
-
-    </tr>
-<% end %>
-
-    """
+    ItemView.render("items_live.html", assigns)
   end
 
   def mount(_params, _, socket) do

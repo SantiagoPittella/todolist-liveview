@@ -2,7 +2,7 @@ defmodule TodoListWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", TodoListWeb.RoomChannel
+  channel "list:lobby", TodoListWeb.ListChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

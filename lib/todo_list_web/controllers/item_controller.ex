@@ -1,5 +1,6 @@
 defmodule TodoListWeb.ItemController do
   use TodoListWeb, :controller
+  import Phoenix.LiveView.Controller
 
   alias TodoList.Todo
   alias TodoList.Todo.Item
@@ -13,9 +14,12 @@ defmodule TodoListWeb.ItemController do
       end
     end
   end
+
   def index(conn, _params) do
     items = Todo.list_items()
-    render(conn, "index.html", items: items)
+    live_render(conn, TodoListWeb.ItemsLive, session: %{
+      "items" => items
+    })
   end
 
   def new(conn, _params) do
